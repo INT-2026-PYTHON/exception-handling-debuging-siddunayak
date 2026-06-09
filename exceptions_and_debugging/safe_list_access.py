@@ -4,7 +4,6 @@
 =================================================
 SAFE LIST ACCESS
 =================================================
-
 Problem Statement:
 Write a Python FUNCTION called `safe_get`
 that takes a list and an index, and returns
@@ -53,13 +52,8 @@ Debugging Skills to Practice:
   inside the except block to print the full
   traceback while still handling the error.
 
--------------------------------------------------
-Input Example 1:
-safe_get([10, 20, 30, 40], 2)
-
-Output Example 1:
-('ok', 30)
-
+# Example usage
+print(read_numbers("numbers.txt"))
 -------------------------------------------------
 Input Example 2:
 safe_get([10, 20, 30], 7)
@@ -77,3 +71,18 @@ Output Example 3:
 =================================================
 
 """
+def safe_get(items, index):
+    try:
+        return ("ok", items[index])
+
+    except IndexError:
+        return ("error", "Index out of range")
+
+    except TypeError:
+        return ("error", "Index must be an int")
+
+    except Exception as e:
+        return ("error", f"Unexpected error: {e}")
+print(safe_get([10, 20, 30], 1))
+print(safe_get([10, 20, 30], 5))
+print(safe_get([10, 20, 30], "1"))
